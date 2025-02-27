@@ -75,7 +75,7 @@ body, html {
 
 
 #content {
-    position: relative;
+    position: fixed;
     z-index: 0;
     color: rgb(255, 255, 255);
     padding: 20px;
@@ -94,8 +94,4 @@ body, html {
 
 #nav-bar.active {
     left: 0;
-}
-
-#content.shift {
-    margin-left: 250px;
 }
