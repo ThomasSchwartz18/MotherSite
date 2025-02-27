@@ -1,0 +1,101 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+#video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: cover;
+}
+
+#nav-bar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Hide the nav bar by default */
+    width: 250px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    border-right: 2px solid grey;
+    transition: left 0.3s ease;
+    z-index: 1;
+    text-align: start;
+}
+
+#nav-bar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    padding-top: 60px;
+}
+
+#nav-bar ul li {
+    padding: 15px;
+    text-align: center;
+}
+
+#nav-bar ul li a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 18px;
+}
+
+#nav-bar ul li a:hover {
+    color: #ffcc00;
+}
+
+#nav-toggle {
+    position: fixed;
+    top: 50%;              /* Center vertically */
+    left: -5px;            /* Initial position when navbar is closed */
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 2;
+    width: 40px;           /* Adjust width as needed */
+    height: 40px;          /* Adjust height as needed */
+    background: url("assets/images/right-arrow.png") no-repeat center center;
+    background-size: contain;
+    transition: left 0.3s ease;
+}
+
+/* When navbar is open */
+#nav-bar.active + #nav-toggle {
+    left: 245px;           /* Move to the right of the navbar */
+    background: url("assets/images/left-arrow.png") no-repeat center center;
+    background-size: contain;
+    /* Note: Removing the transform flip since we use a dedicated left arrow */
+}
+
+
+#content {
+    position: relative;
+    z-index: 0;
+    color: rgb(255, 255, 255);
+    padding: 20px;
+    margin-left: 0;
+    transition: margin-left 0.3s ease;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    align-content: center;
+    text-shadow: 1px 2px 4px black;
+}
+
+#content h1 {
+    font-size: 64px;
+}
+
+#nav-bar.active {
+    left: 0;
+}
+
+#content.shift {
+    margin-left: 250px;
+}

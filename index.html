@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pullout Navigation with Video Background</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+
+    <!-- Video Background -->
+    <video id="video-background" autoplay muted loop>
+        <source src="background-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Navigation Bar -->
+    <div id="nav-bar" class="nav-bar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">PDF Converter</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Navigation Toggle Button -->
+    <div id="nav-toggle" onclick="toggleNav()"></div>
+
+    <!-- Content -->
+    <div id="content">
+        <h1>NICK AND THOMAS DEVELOPMENT</h1>
+    </div>
+
+    <script src="script.js"></script> <!-- Link to external JavaScript file -->
+</body>
+</html>
