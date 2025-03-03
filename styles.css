@@ -344,3 +344,88 @@ body, html {
     width: 20px;
     margin: 0;
 }
+
+@media only screen and (max-width: 600px) {
+    /* Adjust navigation bar width and positioning */
+    #nav-bar {
+      width: 200px; /* a bit narrower on small screens */
+      background: linear-gradient(to bottom, #f0f0f0 0%, #f0f0f0e3 85%, #f0f0f000 100%)
+    }
+    /* Scale down header text */
+    #content h1 {
+      font-size: 32px;
+    }
+    /* Adjust container dimensions for About, UnifyDoc, and Contact sections */
+    .about-content,
+    .unifydoc-content,
+    .contact-wrapper {
+      width: 90%;
+      height: auto;
+      margin: 10px auto;
+      padding: 10px;
+    }
+    /* Tweak navigation toggle positioning if needed */
+    #nav-toggle-container {
+      left: -15;
+      top: 10px;
+      transform: none;
+    }
+
+    #nav-bar.active + #nav-toggle-container {
+        left: 195px;           /* Position next to the now-visible nav bar */
+    }
+
+    .unifydoc-content {
+        width: 59vh;
+        height: 80vh;
+        background-color: rgba(255, 255, 255, 0.803);
+        border-radius: 20px;
+        border: 2px solid black;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .about-content {
+        width: 59vh;
+        height: 80vh;
+        background-color: white;
+        border-radius: 20px;
+        border: 2px solid black;
+        padding: 0px 0px;
+    }
+
+    .about-content p {
+        padding: 0px 10px;
+    }
+
+    .profile-section {
+        margin-top: 20px;
+    }
+    
+    .profile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .profile img {
+        width: 95px;
+    }
+
+    .contact-wrapper {
+        width: 59vh;
+        height: 80vh;
+        background-color: white;
+        border-radius: 20px;
+        border: 2px solid black;
+        padding: 0px 0px;
+    }
+
+    .message textarea {
+        padding: 15px 15px;
+        width: 200px;
+        height: 150px;
+    }
+  }
+  
