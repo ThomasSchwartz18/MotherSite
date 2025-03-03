@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>N&T Development - Contact</title>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <!-- Video Background -->
+  <video id="video-background" autoplay muted loop>
+    <source src="../background-video.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  
+  <!-- Navigation Bar -->
+  <div id="nav-bar" class="nav-bar">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn" onclick="toggleDropdown(event)">Our Apps</a>
+        <ul class="dropdown-content">
+          <li><a href="">UnifyDoc</a></li>
+          <li><a href="">ExcelFormatter... coming soon</a></li>
+        </ul>
+      </li>
+      <li><a href="../pages/about.html">About</a></li>
+      <li><a href="../pages/contact.html">Contact Us</a></li>
+    </ul>
+    <!-- Direct Donate button (opens in a new tab) -->
+    <a href="https://www.paypal.com/donate/?hosted_button_id=AS22M4RMC5HXL" target="_blank" class="nav-button">Donate</a>
+  </div>
+  
+  <!-- Navigation Toggle Button with inline message -->
+  <div id="nav-toggle-container">
+    <div id="nav-toggle" onclick="toggleNav()"></div>
+    <span id="nav-message">Check out our apps!</span>
+  </div>
+  
+  <div id="contact-section">
+    <div class="contact-wrapper">
+      <h1>Contact Us</h1>
+      <form id="contact-form" method="POST" action="https://formsubmit.co/nt.development0@gmail.com">
+        <input type="hidden" name="_captcha" value="false">
+        <!-- Remove the _next field to avoid redirection -->
+        <div class="field">
+          <input type="text" name="name" placeholder="Full Name *" required>
+        </div>
+        <div class="field">
+          <input type="email" name="email" placeholder="Your Email for Response *" required>
+        </div>
+        <div class="field">
+          <input type="text" name="subject" placeholder="Subject">
+        </div>
+        <div class="message">
+          <textarea name="message" placeholder="Write your message" rows="4" required></textarea>
+        </div>
+        <div class="button-area">
+          <button type="submit" id="submit-btn">Send Message</button>
+        </div>
+        <!-- This element will display the loading dots -->
+        <span id="loading-indicator" style="display: none;">.</span>
+        <!-- Placeholder for success or error messages -->
+        <div id="form-feedback"></div>
+      </form>
+    </div>
+  </div>  
+  
+  <script src="../script.js"></script>
+</body>
+</html>

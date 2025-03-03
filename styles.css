@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Global Styles */
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
     overflow: hidden;
-    font-family: Arial, sans-serif;
+    font-family: 'Fira Sans', 'Fira Code';
 }
 
 #video-background {
@@ -16,6 +19,7 @@ body, html {
     object-fit: cover;
 }
 
+/* Navigation Bar with Gradient Right Border */
 #nav-bar {
     position: fixed;
     top: 0;
@@ -23,57 +27,152 @@ body, html {
     width: 250px;
     height: 100%;
     background-color: rgba(255, 255, 255, 0);
-    border-right: 2px solid grey;
+    border-right: 2px solid;
+    border-image: linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 10%, rgba(0, 0, 0, 0) 100%) 1;        
     transition: left 0.3s ease;
     z-index: 1;
     text-align: start;
+    padding: 0;
+    font-family: 'Fira Code';
 }
 
 #nav-bar ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    padding-top: 60px;
+    padding-top: 5px; /* Adjusted to align nav buttons closer to the top */
 }
 
+/* Updated nav tab styles for a VSCode file panel look */
 #nav-bar ul li {
-    padding: 15px;
-    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 #nav-bar ul li a {
+    display: block;
+    padding: 8px 15px;  /* Reduced spacing */
     color: rgb(0, 0, 0);
     text-decoration: none;
     font-size: 18px;
+    border-bottom: 1px solid rgb(200, 200, 200); /* Full-width bottom border */
 }
 
 #nav-bar ul li a:hover {
-    color: #ffcc00;
+    background-color: rgb(200, 200, 200); /* Match border color on hover */
 }
 
-#nav-toggle {
+/* Dropdown for Apps Tab */
+#nav-bar ul li.dropdown {
+    position: relative;
+    cursor: pointer;
+}
+
+#nav-bar ul li.dropdown .dropbtn {
+    display: block;
+}
+
+/* Remove static plus sign and add via pseudo-element on dropbtn */
+#nav-bar ul li.dropdown .dropbtn::after {
+    content: " +";
+    font-weight: bold;
+    margin-left: 4px;
+}
+
+#nav-bar ul li.dropdown.open .dropbtn::after {
+    content: " -";
+}
+
+/* Add pulsing animation to the "Our Apps" text within dropbtn */
+#nav-bar ul li.dropdown .dropbtn .app-text {
+    animation: pulse 2s infinite;
+}
+
+#nav-bar ul li.dropdown.open .dropbtn .app-text {
+    animation: none;
+}
+
+/* Dropdown content is part of document flow so that it pushes down other items */
+#nav-bar ul li.dropdown .dropdown-content {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#nav-bar ul li.dropdown.open .dropdown-content {
+    display: block;
+}
+
+/* Style dropdown list items to match nav tabs, with a slightly darker background */
+#nav-bar ul li.dropdown .dropdown-content li a {
+    display: block;
+    padding: 8px 15px; /* Same spacing as main tabs */
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 16px;
+    border-bottom: 1px solid rgb(200, 200, 200);
+    background-color: #f0f0f0; /* Slightly darker background */
+}
+
+#nav-bar ul li.dropdown .dropdown-content li a:hover {
+    background-color: rgb(200, 200, 200);
+    color: #000;
+}
+
+/* Navigation Toggle and Message Container */
+#nav-toggle-container {
     position: fixed;
     top: 50%;              /* Center vertically */
     left: -5px;            /* Initial position when navbar is closed */
     transform: translateY(-50%);
-    cursor: pointer;
+    display: flex;
+    align-items: center;
     z-index: 2;
+    transition: left 0.3s ease;
+}
+
+#nav-toggle {
     width: 40px;           /* Adjust width as needed */
     height: 40px;          /* Adjust height as needed */
     background: url("assets/images/right-arrow.png") no-repeat center center;
     background-size: contain;
-    transition: left 0.3s ease;
+    cursor: pointer;
 }
 
-/* When navbar is open */
-#nav-bar.active + #nav-toggle {
-    left: 245px;           /* Move to the right of the navbar */
+/* When nav-bar is active, move the nav-toggle-container */
+#nav-bar.active + #nav-toggle-container {
+    left: 245px;           /* Position next to the now-visible nav bar */
+}
+
+/* Change the toggle arrow when nav is active */
+#nav-bar.active + #nav-toggle-container #nav-toggle {
     background: url("assets/images/left-arrow.png") no-repeat center center;
     background-size: contain;
-    /* Note: Removing the transform flip since we use a dedicated left arrow */
 }
 
+#nav-message {
+    margin-left: 8px;
+    font-size: 16px;
+    animation: pulse 2s infinite;
+    transition: opacity 0.3s ease, transform 0.3s ease 0.1s; /* 0.1s delay on transform */
+    opacity: 1;
+    transform: scale(1) translateX(0);
+}
 
+#nav-message.hidden {
+    opacity: 0;
+    transform: scale(0.5) translateX(-100px); /* shrink and move right */
+    animation: none;
+}
+
+/* Pulse Keyframes */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Content styling remains unchanged */
 #content {
     position: fixed;
     z-index: 0;
@@ -92,6 +191,115 @@ body, html {
     font-size: 64px;
 }
 
+/* When nav-bar is open */
 #nav-bar.active {
     left: 0;
+}
+
+/* NEW: Position the Donate button at the bottom center of the nav bar */
+#nav-bar .nav-button {
+    position: absolute;
+    bottom: 20px;       /* Adjust vertical spacing as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(251, 192, 82);
+    padding: 10px 25px;
+    border-radius: 10px;
+    color: #f0f0f0;
+    text-decoration: none;
+}
+
+#nav-bar .nav-button:hover {
+    background-color: rgb(254, 165, 0);
+}
+
+/* ABOUT SECTION */
+
+#about-section {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;  /* Centers children vertically */
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.about-content {
+    width: 95vh;
+    height: 80vh;
+    background-color: white;
+    border-radius: 20px;
+    border: 2px solid black;
+    padding: 0px 0px;
+}
+
+.about-content p {
+    font-family: 'Fira Code', 'Fira';
+    padding: 0px 100px;
+}
+
+.profile-section {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile img {
+    width: 150px;
+}
+
+/* CONTACT SECTION */
+#contact-section {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;  /* Centers children vertically */
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.contact-wrapper {
+    width: 95vh;
+    height: 80vh;
+    background-color: white;
+    border-radius: 20px;
+    border: 2px solid black;
+    padding: 0px 0px;
+}
+
+.field {
+    font-family: 'Fira Code', 'Fira Sans';
+    margin: 10px 0px;
+}
+
+.field input {
+    padding: 5px 15px;
+    width: 200px;
+    font-family: 'Fira Code', 'Fira Sans';
+}
+
+.message textarea {
+    padding: 5px 15px;
+    width: 700px;
+    height: 200px;
+}
+
+.button-area button {
+    font-family: 'Fira Code', 'Fira Sans';
+}
+
+.button-area button:hover {
+    cursor: pointer;
 }
