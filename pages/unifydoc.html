@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>N&T Development</title>
+  <link rel="stylesheet" href="../styles.css"> <!-- Link to external CSS file -->
+  <!-- Inline styles for expandable list items -->
+  <style>
+    .expandable {
+      display: none;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+    .expand-btn {
+      cursor: pointer;
+      margin-left: 5px;
+      vertical-align: middle;
+      transition: transform 0.3s ease;
+    }
+    .expand-btn.expanded {
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body>
+  <!-- Video Background -->
+  <video id="video-background" autoplay muted loop>
+    <source src="../background-video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div id="nav-bar" class="nav-bar">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn" onclick="toggleDropdown(event)">Our Apps</a>
+        <ul class="dropdown-content">
+          <li><a href="../pages/unifydoc.html">UnifyDoc</a></li>
+          <li><a href="">ExcelFormatter... coming soon</a></li>
+        </ul>
+      </li>
+      <li><a href="../pages/about.html">About</a></li>
+      <li><a href="../pages/contact.html">Contact Us</a></li>
+    </ul>
+    <!-- Direct Donate button (opens in a new tab) -->
+    <a href="https://www.paypal.com/donate/?hosted_button_id=AS22M4RMC5HXL" target="_blank" class="nav-button">Donate</a>
+  </div>
+  
+  <!-- Navigation Toggle Button with inline message -->
+  <div id="nav-toggle-container">
+    <div id="nav-toggle" onclick="toggleNav()"></div>
+    <span id="nav-message">Check out our apps!</span>
+  </div>
+  <!-- Content -->
+  <div id="unifydoc-section">
+    <div class="unifydoc-content">
+      <h1>UnifyDoc</h1>
+      <div class="unifydoc-desc">
+        <h3>How can it help you?</h3>
+        <p>
+          The Code to PDF Converter isn’t just for merging different file types or consolidating multiple files into a single document—it’s a versatile tool that can revolutionize how you handle, review, and share code projects. For example, if you need to combine multiple file types into one or merge several files of the same type, you can simply upload your code project via a ZIP folder. This process generates a comprehensive PDF that includes every file with its name and relative path, making it easier for AI debugging tools to read and analyze your complete project without any guesswork.
+          <br>
+          <br>
+          Other Potential Use Cases:
+        </p>
+        <ul>
+          <li>
+            <b>For Developers and Tech Teams:</b>
+            <img src="../assets/images/expand.png" class="expand-btn" alt="Expand" />
+            <span class="expandable">
+                <ul>
+                    <li><b>Streamlined Code Review:</b> Generate a single, organized PDF from multiple code files to facilitate thorough team reviews.</li>
+                    <li><b>Enhanced Debugging Sessions:</b> Provide AI tools with a unified document of your project, ensuring every snippet is available for analysis.</li>
+                    <li><b>Professional Portfolios:</b> Create polished PDFs of your projects for interviews or client presentations, showcasing your work in a neat format.</li>
+                    <li><b>Archiving and Compliance:</b> Maintain detailed, dated records of your code projects to support compliance, version control, and historical reference.  </li>
+                </ul>
+            </span>
+          </li>
+          <li>
+            <b>For Educators and Trainers:</b>
+            <img src="../assets/images/expand.png" class="expand-btn" alt="Expand" />
+            <span class="expandable">
+              <ul>
+                <li><b>Comprehensive Teaching Materials:</b> Teachers can merge diverse file types—such as text documents, slides, images, and even code examples—into one cohesive PDF. This makes it easier to prepare and distribute lesson plans, homework assignments, or study guides.</li>
+                <li><b>Interactive Homework Assignments:</b> Combine readings, instructions, and sample code or diagrams into a single document, simplifying distribution and ensuring students receive all necessary materials in one file.</li>
+                <li><b>Workshop and Training Documentation:</b> Create unified documents for training sessions or workshops that include handouts, presentation slides, and supplementary materials. This ensures learners have a complete reference to follow along.</li>
+                <li><b>Project-Based Learning:</b> In subjects like computer science or digital design, instructors can assemble project files—such as instructions, examples, and resource files—into one document. This helps students better understand the structure and context of the project.</li>
+              </ul>
+            </span>
+          </li>
+          <li>
+            <b>For Business and Professional Environments:</b>
+            <img src="../assets/images/expand.png" class="expand-btn" alt="Expand" />
+            <span class="expandable">
+              <ul>
+                <li><b>Meeting and Presentation Materials:</b> Consolidate various documents, reports, and spreadsheets into a single PDF to present a unified view of your project or proposal.</li>
+                <li><b>Internal Documentation:</b> Teams can use the tool to create comprehensive documentation that includes code samples, policy documents, and design schematics, ensuring everyone has a clear, consistent reference.</li>
+              </ul>
+            </span>
+          </li>
+          <li>
+            <b>Archiving and Compliance:</b>
+            <img src="../assets/images/expand.png" class="expand-btn" alt="Expand" />
+            <span class="expandable">
+              Keeping a unified, dated record of your code projects is invaluable for compliance, version control, and historical reference. Whether you’re auditing past projects or maintaining a version archive, a structured PDF provides a reliable snapshot of your work.
+            </span>
+          </li>
+        </ul>
+        <p>
+          By addressing these scenarios, the application demonstrates its ability to cater to a diverse range of needs—from debugging and code reviews to educational and archival purposes—making it a highly useful tool for developers, teams, and educators alike.
+        </p>
+      </div>
+    </div>
+  </div>
+  <script src="../script.js"></script> <!-- Link to external JavaScript file -->
+  <!-- Inline script for expandable list items -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const expandButtons = document.querySelectorAll('.expand-btn');
+      expandButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          // The expandable text is the next sibling element
+          const expandableText = btn.nextElementSibling;
+          if (expandableText.style.display === 'inline' || expandableText.style.display === 'inline-block') {
+            expandableText.style.display = 'none';
+            btn.classList.remove('expanded');
+          } else {
+            expandableText.style.display = 'inline-block';
+            btn.classList.add('expanded');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
