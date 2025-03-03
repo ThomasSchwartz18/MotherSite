@@ -376,7 +376,7 @@ body, html {
     }
 
     .unifydoc-content {
-        width: 59vh;
+        width: 50vh;
         height: 80vh;
         background-color: rgba(255, 255, 255, 0.803);
         border-radius: 20px;
@@ -386,7 +386,7 @@ body, html {
     }
 
     .about-content {
-        width: 59vh;
+        width: 50vh;
         height: 80vh;
         background-color: white;
         border-radius: 20px;
@@ -399,7 +399,7 @@ body, html {
     }
 
     .profile-section {
-        margin-top: 20px;
+        margin-top: 10px;
     }
     
     .profile {
@@ -414,7 +414,7 @@ body, html {
     }
 
     .contact-wrapper {
-        width: 59vh;
+        width: 50vh;
         height: 80vh;
         background-color: white;
         border-radius: 20px;
